@@ -4,9 +4,16 @@
 const uglify = require('./sender/uglify.js');
 
 const json = {
-    b: 20,
-    a: 10,
-    c: 30
+    b: [3, 4],
+    a: {
+        aa: null,
+        ab: {
+            aaa: 1,
+            aab: undefined 
+        },
+        ac: 2
+    },
+    c: {}
 };
 const nosj = uglify(json);
 

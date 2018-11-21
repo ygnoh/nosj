@@ -1,17 +1,25 @@
 /**
  * @param json JS object to be NOSJ
- * @returns nosj - uglified json
+ * @returns array - uglifed json
  */
 const uglify = json => {
     const sortedKeys = Object.keys(json).sort();
 
-    const nosj = sortedKeys.reduce((acc, key) => {
-        acc.push(json[key]);
+    return sortedKeys.reduce((acc, key) => {
+        const value = json[key];
+        let uglifiedValue;
+
+        if (typeof value === "object" && value !== null) {
+            // if value is an object, uglify again
+            uglifiedValue = uglify(value);
+        } else {
+            uglifiedValue = value;
+        }
+
+        acc.push(uglifiedValue);
 
         return acc;
     }, []);
-
-    return nosj;
 };
 
 module.exports = uglify;
