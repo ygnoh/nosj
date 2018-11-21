@@ -3,7 +3,13 @@
  * @returns nosj - uglified json
  */
 const uglify = json => {
-    const nosj = 'test';
+    const sortedKeys = Object.keys(json).sort();
+
+    const nosj = sortedKeys.reduce((acc, key) => {
+        acc.push(json[key]);
+
+        return acc;
+    }, []);
 
     return nosj;
 };
