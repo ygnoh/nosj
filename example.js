@@ -1,36 +1,59 @@
-const originalJson = {
-    b: [3, 4],
-    a: {
-        aa: null,
-        ab: {
-            aaa: 1,
-            aab: undefined 
-        },
-        ac: 2
+const definitionSet = require('./receiver/definition-set.js');
+
+const exampleData = [
+    {
+        id: 'example1',
+        json: {
+            b: [3, 4],
+            a: {
+                aa: null,
+                ab: {
+                    aaa: 1,
+                    aab: undefined
+                },
+                ac: 2
+            },
+            c: {}
+        }
     },
-    c: {}
-};
+    {
+        id: 'example2',
+        json: {
+            a: 10,
+            "t-e-s-t": {
+                a: 100
+            }
+        }
+    }
+];
 
-console.log('original JSON:\n', originalJson, '\n')
+exampleData.forEach((example, index) => {
+    console.log(`***** EXAMPLE ${index} *****`);
 
-/**
- * NOTE: You have to create NOSJ from the JSON whose model is defined in your definition.
- *       If not, You cannot recover the NOSJ.
- * 
- * Sender creates NOSJ to send JSON.
- */
-const uglify = require('./sender/uglify.js');
+    const { id: exampleId, json: originalJSON } = example;
 
-const nosj = uglify(originalJson);
-console.log('NOSJ:\n', nosj, '\n');
+    console.log('original JSON:\n', originalJSON, '\n')
 
-/**
- * NOTE: Receiver and sender have to share the same definition.
- * 
- * Receiver reads the NOSJ and beautifies it using the definition.
- */
-const definition = require('./receiver/definition.json');
-const beautify = require('./receiver/beautify.js');
+    /**
+     * NOTE: You can create NOSJ only from the JSON whose model is defined in your definition.
+     *       If not, You cannot recover the NOSJ.
+     * 
+     * Sender creates NOSJ to send JSON.
+     */
+    const uglify = require('./sender/uglify.js');
 
-const recoveredJson = beautify(nosj, definition);
-console.log('recovered JSON:\n', recoveredJson, '\n');
+    const nosj = uglify(originalJSON, exampleId);
+    console.log('NOSJ:\n', nosj.data, '\n');
+
+    /**
+     * NOTE: Receiver and sender have to share the same definition.
+     * 
+     * Receiver reads the NOSJ and beautifies it using the definition.
+     */
+    const beautify = require('./receiver/beautify.js');
+
+    const { definition } = definitionSet.find(({ id }) => id === exampleId);
+
+    const recoveredJson = beautify(nosj.data, definition);
+    console.log('recovered JSON:\n', recoveredJson, '\n');
+});
