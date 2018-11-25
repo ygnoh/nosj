@@ -7,13 +7,13 @@ const definitionSet = [
             },
             "a": {
                 "type": "object",
-                "children": {
+                "definition": {
                     "aa": {
                         "type": "number"
                     },
                     "ab": {
                         "type": "object",
-                        "children": {
+                        "definition": {
                             "aaa": {
                                 "type": "number"
                             },
@@ -29,7 +29,7 @@ const definitionSet = [
             },
             "c": {
                 "type": "object",
-                "children": {}
+                "definition": {}
             }
         }
     },
@@ -41,7 +41,7 @@ const definitionSet = [
             },
             "t-e-s-t": {
                 "type": "object",
-                "children": {
+                "definition": {
                     "a": {
                         "type": "number"
                     }

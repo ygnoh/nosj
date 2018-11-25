@@ -11,10 +11,10 @@ const beautify = (nosj, definition) => {
 
     return nosj.reduce((acc, value, index) => {
         const key = sortedKeys[index];
-        const { type, children } = definition[key];
+        const { type, definition: childDefinition } = definition[key];
 
         if (type === "object") {
-            acc[key] = beautify(value, children)
+            acc[key] = beautify(value, childDefinition)
         } else {
             acc[key] = value;
         }
