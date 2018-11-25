@@ -1,0 +1,31 @@
+{
+    "b": {
+        "type": "array"
+    },
+    "a": {
+        "type": "object",
+        "children": {
+            "aa": {
+                "type": "number"
+            },
+            "ab": {
+                "type": "object",
+                "children": {
+                    "aaa": {
+                        "type": "number"
+                    },
+                    "aab": {
+                        "type": "number"
+                    }
+                }
+            },
+            "ac": {
+                "type": "number"
+            }
+        }
+    },
+    "c": {
+        "type": "object",
+        "children": {}
+    }
+}
