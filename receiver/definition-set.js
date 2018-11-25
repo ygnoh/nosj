@@ -1,49 +1,71 @@
 const definitionSet = [
     {
-        id: "example1",
+        id: 'https://map.naver.com/external/vis?request=getSimpleVersion&apiVersion=1.0&output=json&addversion=true',
         definition: {
-            "b": {
-                "type": "array"
-            },
-            "a": {
-                "type": "object",
-                "definition": {
-                    "aa": {
-                        "type": "number"
-                    },
-                    "ab": {
-                        "type": "object",
-                        "definition": {
-                            "aaa": {
-                                "type": "number"
-                            },
-                            "aab": {
-                                "type": "number"
-                            }
+            result: {
+                type: 'object',
+                definition: {
+                    region: {
+                        type: 'object',
+                        definition: {
+                            rcode: {},
+                            doCode: {},
+                            doName: {},
+                            siCode: {},
+                            siName: {},
+                            dongCode: {},
+                            dongName: {},
+                            xPos: {},
+                            yPos: {}
                         }
                     },
-                    "ac": {
-                        "type": "number"
+                    weather: {
+                        type: 'object',
+                        definition: {
+                            weatherCode: {},
+                            weatherText: {},
+                            temperature: {},
+                            iconURL: {},
+                            detailURL: {}
+                        }
                     }
                 }
-            },
-            "c": {
-                "type": "object",
-                "definition": {}
             }
         }
     },
     {
-        id: "example2",
+        id: 'https://www.facebook.com/api/graphql/',
         definition: {
-            "a": {
-                "type": "number"
-            },
-            "t-e-s-t": {
-                "type": "object",
-                "definition": {
-                    "a": {
-                        "type": "number"
+            data: {
+                type: 'object',
+                definition: {
+                    feedback: {
+                        type: 'object',
+                        definition: {
+                            "can_viewer_react": {},
+                            "viewer_feedback_reaction_info": {},
+                            id: {},
+                            "viewer_current_actor": {
+                                type: 'object',
+                                definition: {
+                                    "__typename": {},
+                                    id: {}
+                                }
+                            },
+                            "supported_reactions": {},
+                            "top_reactions": {
+                                type: 'object',
+                                definition: {
+                                    edges: {}
+                                }
+                            },
+                            reactors: {
+                                type: 'object',
+                                definition: {
+                                    count: {}
+                                }
+                            }
+                        }
                     }
                 }
             }
