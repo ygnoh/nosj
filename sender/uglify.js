@@ -1,6 +1,9 @@
 /**
+ * Uglify the JSON
+ * 
  * @param json JS object to be NOSJ
- * @returns array - uglifed json
+ * 
+ * @returns array, uglifed json (NOSJ)
  */
 const uglify = json => {
     const sortedKeys = Object.keys(json).sort();
