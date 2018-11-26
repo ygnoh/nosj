@@ -124,7 +124,7 @@ exampleData.forEach((example, index) => {
      */
     const beautify = require('./receiver/beautify.js');
 
-    const { definition } = definitionSet.find(({ id }) => id === exampleId);
+    const definition = definitionSet[exampleId];
 
     const recoveredJson = beautify(nosj.data, definition);
     console.log('recovered JSON:\n', recoveredJson, '\n');
